@@ -1,5 +1,5 @@
-import { PrismaService } from '../prisma/prisma.service';
 import { BaseRepositoryPort } from '../../../shared/kernel/domain/base.repository.port';
+import { PrismaService } from '../prisma/prisma.service';
 
 /**
  * BaseRepository — Infrastructure Layer
