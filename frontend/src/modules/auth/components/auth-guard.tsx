@@ -1,10 +1,10 @@
 'use client';
 
-import { useEffect, type ReactNode } from 'react';
 import { useRouter } from 'next/navigation';
+import { type ReactNode, useEffect } from 'react';
 
 import { useAuth } from '@/modules/auth';
-import { Spinner } from '@/shared/components';
+import { Spinner } from '@/shared/components/ui/spinner';
 
 export function AuthGuard({ children }: { children: ReactNode }) {
   const { isAuthenticated, isLoading } = useAuth();
@@ -19,7 +19,7 @@ export function AuthGuard({ children }: { children: ReactNode }) {
   if (isLoading) {
     return (
       <div className="flex min-h-screen items-center justify-center">
-        <Spinner size="lg" />
+        <Spinner />
       </div>
     );
   }

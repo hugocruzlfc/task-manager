@@ -1,6 +1,6 @@
 'use client';
 
-import { TaskPriority, TaskStatus, type Task } from '@/shared/types';
+import { type Task, TaskPriority, TaskStatus } from '@/shared/types';
 
 interface TaskCardProps {
   task: Task;

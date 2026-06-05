@@ -1,6 +1,6 @@
 'use client';
 
-import { TaskStatus, type Task } from '@/shared/types';
+import { type Task, TaskStatus } from '@/shared/types';
 
 import { useTasks } from '../hooks/use-tasks';
 import { TaskCard } from './task-card';

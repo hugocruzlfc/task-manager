@@ -2,13 +2,13 @@
 
 import {
   createContext,
+  type ReactNode,
   useCallback,
   useContext,
   useMemo,
-  type ReactNode,
 } from 'react';
 
-import { signIn, signUp, signOut, useSession } from '../lib/auth-client';
+import { signIn, signOut, signUp, useSession } from '../lib/auth-client';
 
 interface AuthContextValue {
   user: { id: string; email: string; name: string } | null;

@@ -7,7 +7,7 @@
 export {
   authClient,
   signIn,
-  signUp,
   signOut,
+  signUp,
   useSession,
 } from '../lib/auth-client';

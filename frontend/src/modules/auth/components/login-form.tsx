@@ -1,14 +1,13 @@
 'use client';
 
-import { useCallback, useState, type FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
+import { type FormEvent, useCallback, useState } from 'react';
 
 import { useAuth } from '../hooks/use-auth';
 
-export function RegisterForm() {
-  const { register } = useAuth();
+export function LoginForm() {
+  const { login } = useAuth();
   const router = useRouter();
-  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState<string | null>(null);
@@ -20,15 +19,15 @@ export function RegisterForm() {
       setError(null);
       setIsPending(true);
       try {
-        await register({ name, email, password });
+        await login({ email, password });
         router.push('/dashboard');
       } catch {
-        setError('Registration failed. Please try again.');
+        setError('Invalid email or password');
       } finally {
         setIsPending(false);
       }
     },
-    [name, email, password, register, router],
+    [email, password, login, router],
   );
 
   return (
@@ -36,23 +35,11 @@ export function RegisterForm() {
       onSubmit={handleSubmit}
       className="flex flex-col gap-4 w-full max-w-sm"
     >
-      <h1 className="text-2xl font-semibold">Create account</h1>
+      <h1 className="text-2xl font-semibold">Sign in</h1>
 
       {error && (
         <p className="text-sm text-red-600 dark:text-red-400">{error}</p>
       )}
-
-      <label className="flex flex-col gap-1">
-        <span className="text-sm font-medium">Name</span>
-        <input
-          type="text"
-          required
-          autoComplete="name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          className="rounded-md border border-zinc-300 px-3 py-2 text-sm dark:border-zinc-700 dark:bg-zinc-900"
-        />
-      </label>
 
       <label className="flex flex-col gap-1">
         <span className="text-sm font-medium">Email</span>
@@ -71,8 +58,7 @@ export function RegisterForm() {
         <input
           type="password"
           required
-          autoComplete="new-password"
-          minLength={8}
+          autoComplete="current-password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           className="rounded-md border border-zinc-300 px-3 py-2 text-sm dark:border-zinc-700 dark:bg-zinc-900"
@@ -84,7 +70,7 @@ export function RegisterForm() {
         disabled={isPending}
         className="rounded-md bg-zinc-900 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-zinc-800 disabled:opacity-50 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-200"
       >
-        {isPending ? 'Creating account…' : 'Create account'}
+        {isPending ? 'Signing in…' : 'Sign in'}
       </button>
     </form>
   );
