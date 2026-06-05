@@ -2,6 +2,8 @@ import ky, { type KyInstance, type Options } from 'ky';
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:3001';
 
+
+
 function createApiClient(): KyInstance {
   return ky.create({
     prefixUrl: API_BASE_URL,

@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "concurrently \"pnpm --dir frontend dev\" \"pnpm --dir backend start:dev\"",
     "install:all": "pnpm install && cd frontend && pnpm install && cd ../backend && pnpm install  && cd ..",
+    "lint:all": "pnpm --dir frontend lint && pnpm --dir backend lint",
     "db:up": "docker compose up -d",
     "db:down": "docker compose down"
   },
@@ -13,6 +14,15 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "concurrently": "^10.0.3"
+    "@eslint/js": "^9.18.0",
+    "concurrently": "^10.0.3",
+    "eslint": "^9.18.0",
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-prettier": "^5.2.2",
+    "eslint-plugin-simple-import-sort": "^13.0.0",
+    "eslint-plugin-unused-imports": "^4.4.1",
+    "globals": "^17.6.0",
+    "jiti": "^2.7.0",
+    "typescript-eslint": "^8.60.1"
   }
 }
