@@ -40,11 +40,17 @@ logs-app: ## Ver logs de la aplicación NestJS
 	$(DC) logs -f backend  # cambia "backend" por el nombre de tu servicio
 
 # ====================== PRISMA ======================
+migrate-init: ## Crea la primera migración de Prisma
+	cd $(BACKEND_DIR) && pnpm dlx prisma migrate dev --name init
+
+prisma-generate: ## Regenera el cliente de Prisma
+	cd $(BACKEND_DIR) && pnpm dlx prisma generate
+
 migrate: ## Ejecuta migraciones de Prisma
-	cd $(BACKEND_DIR) && pnpm prisma migrate dev
+	cd $(BACKEND_DIR) && pnpm dlx prisma migrate dev --name nombre_descriptivo
 
 migrate-prod: ## Migraciones en producción (sin dev)
-	cd $(BACKEND_DIR) && pnpm prisma migrate deploy
+	cd $(BACKEND_DIR) && pnpm dlx prisma migrate deploy
 
 migrate-reset: ## Resetea la base de datos (¡cuidado!)
 	cd $(BACKEND_DIR) && pnpm prisma migrate reset
