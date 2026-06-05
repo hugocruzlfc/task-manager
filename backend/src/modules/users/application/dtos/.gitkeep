@@ -1,0 +1,10 @@
+/**
+ * Users Application Layer — DTOs
+ *
+ * Place request/response DTOs here, e.g.:
+ *   create-user.dto.ts
+ *   user-response.dto.ts
+ *
+ * DTOs carry data between the interfaces layer and use-cases.
+ * They may use class-validator decorators for validation.
+ */

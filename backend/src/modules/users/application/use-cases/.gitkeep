@@ -1,0 +1,22 @@
+/**
+ * Users Application Layer — Use Cases
+ *
+ * Place one file per use-case here, e.g.:
+ *   create-user.use-case.ts
+ *   get-user-by-id.use-case.ts
+ *
+ * Each use-case:
+ *  - Receives a DTO from the interfaces layer
+ *  - Orchestrates domain objects (entities, value objects)
+ *  - Uses the repository port (injected via DI token)
+ *  - Returns a response DTO or throws a domain error
+ *
+ * Example signature:
+ *   @Injectable()
+ *   export class CreateUserUseCase {
+ *     constructor(
+ *       @Inject(USER_REPOSITORY) private readonly repo: UserRepositoryPort,
+ *     ) {}
+ *     async execute(dto: CreateUserDto): Promise<void> { ... }
+ *   }
+ */
