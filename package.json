@@ -9,7 +9,7 @@
     "lint:all": "pnpm --dir frontend lint && pnpm --dir backend lint",
     "db:up": "docker compose up -d",
     "db:down": "docker compose down",
-    "prepare": "husky"
+    "prepare": "husky install"
   },
   "keywords": [],
   "author": "",
@@ -29,10 +29,16 @@
     "typescript-eslint": "^8.60.1"
   },
   "lint-staged": {
-    "*.{js,ts,tsx}": [
-      "eslint --fix",
-      "prettier --write"
+    "frontend/**/*.{js,ts,tsx,jsx}": [
+      "pnpm --dir frontend exec eslint --fix",
+      "pnpm --dir frontend exec prettier --write"
     ],
+    "backend/**/*.{js,ts,tsx,jsx}": [
+      "pnpm --dir backend exec eslint --fix",
+      "pnpm --dir backend exec prettier --write"
+    ],
+    "frontend/**/*.{md,html,json}": "pnpm --dir frontend exec prettier --write",
+    "backend/**/*.{md,html,json}": "pnpm --dir backend exec prettier --write",
     "*.{md,html,json}": "prettier --write"
   }
 }
